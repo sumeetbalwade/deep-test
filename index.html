@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
 <html>
-
-<head>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-  
-
-  <style>
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		/>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+		<!-- <style>
     body {
       background-color: black;
       background-size: cover;
@@ -107,215 +107,305 @@
       font-size: 4em;
       font-weight: 600;
     }
-  </style>
+  </style> -->
 
-</head>
+		<style>
+			input {
+				margin: 1rem;
+			}
 
-<body>
+			button {
+				margin: 1rem;
+				padding: 1rem;
+			}
 
-  div
+			a {
+				margin: 1rem;
+				padding: 1rem;
+			}
 
-  <h1 id="h1">Hey!! Welcome To The Coffee Bean's 😀</h1>
+			table {
+				margin-top: 3rem;
+			}
 
-  <div ng-app="myApp" ng-controller="myController">
+			h1 {
+				text-align: center;
+			}
+		</style>
+	</head>
 
-    <ul>
+	<body>
+		<div class="container">
+			<h1 id="h1">Hey!! Welcome To The Coffee Bean's 😀</h1>
 
-      Dish Name:<input style="color: black;" type="text" ng-model="name" />
+			<div ng-app="myApp" ng-controller="myController">
+				<div class="row">
+					<div class="col-md-3">
+						<input
+							type="text"
+							class="form-control py-1"
+							placeholder="Dish Name"
+							ng-model="name"
+						/>
+					</div>
+					<div class="col-md-3">
+						<input
+							type="text"
+							class="form-control py-1"
+							placeholder="Dish Category"
+							ng-model="cat"
+						/>
+					</div>
+					<div class="col-md-3">
+						<input
+							type="text"
+							class="form-control py-1"
+							placeholder="Dish Price"
+							ng-model="price"
+						/>
+					</div>
+					<div class="col-md-3">
+						<input
+							type="text"
+							class="form-control py-1"
+							placeholder="test"
+							ng-model="test"
+						/>
+					</div>
+				</div>
 
-    </ul>
+				<button type="button" class="btn btn-primary" ng-click="addRow()">
+					Add
+				</button>
 
-    <ul>
+				<script>
+					$(document).ready(function () {
+						$("#myInput").on("keyup", function () {
+							var value = $(this).val().toLowerCase();
+							$("#table tr").filter(function () {
+								$(this).toggle(
+									$(this).text().toLowerCase().indexOf(value) > -1
+								);
+							});
+						});
+					});
+				</script>
 
-      Dish Category: <input style="color: black;" type="text" ng-model="cat" />
+				<table id="table" class="table table-striped table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Dish ID</th>
+							<th scope="col">Dish Name</th>
+							<th scope="col">Dish Category</th>
+							<th scope="col">Dish Price</th>
+							<th scope="col">test</th>
+							<th scope="col">delete data</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="snames in sArray">
+							<td scope="row">{{$index + 1}}</td>
 
-    </ul>
-    <ul>
+							<td>{{snames.name}}</td>
 
-      Dish Price: <input style="color: black;" type="text" ng-model="price" />
+							<td>{{snames.cat}}</td>
+							<td>{{snames.price}}</td>
+							<td>{{snames.test}}</td>
+							<td><input type="checkbox" ng-model="snames.Remove" /></td>
+						</tr>
+					</tbody>
+				</table>
 
-    </ul>
+				<button type="button" class="btn btn-success" ng-click="submit()">
+					Display Dishes
+				</button>
+				<button type="button" class="btn btn-danger" ng-click="removeRow()">
+					Remove Dish
+				</button>
+				<button type="button" class="btn btn-warning" ng-click="upstb()">
+					Update Dish
+				</button>
+				<a class="btn btn-primary" href="index.html">Log Out</a>
+			</div>
 
-    <ul>
-
-      Dish Test <input style="color: black;" type="text" ng-model="test" />
-
-    </ul>
-
-    <ul>
-      <li><button class="btn btn-default btn-sm" ng-click="addRow()"> Add New Dish</button></li>
-
-
-      <script>
-        $(document).ready(function () {
-          $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $("#table tr").filter(function () {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			<!-- <div ng-app="myApp" ng-controller="myController">
+  
+      <ul>
+  
+        Dish Name:<input style="color: black;" type="text" ng-model="name" />
+  
+      </ul>
+  
+      <ul>
+  
+        Dish Category: <input style="color: black;" type="text" ng-model="cat" />
+  
+      </ul>
+      <ul>
+  
+        Dish Price: <input style="color: black;" type="text" ng-model="price" />
+  
+      </ul>
+  
+      <ul>
+  
+        Dish Test <input style="color: black;" type="text" ng-model="test" />
+  
+      </ul>
+  
+      <ul>
+        <li><button class="btn btn-default btn-sm" ng-click="addRow()"> Add New Dish</button></li>
+  
+  
+        <script>
+          $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+              var value = $(this).val().toLowerCase();
+              $("#table tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
             });
           });
-        });
-      </script>
-
-
-
-    </ul>
-
-
-
-
-
-    <table id="table" style="font-family: 'Big Shoulders Text', cursive;">
-
-      <tr>
-
-        <th>*Dish ID</th>
-
-
-        <th>*Dish Name</th>
-
-        <th>*Dish Category</th>
-        <th>*Dish Price</th>
-        <th>test</th>
-        <th>delete data</th>
-
-      </tr>
-
-
-
-      <tr ng-repeat="snames in sArray">
-
-        <td><label>{{$index + 1}}</label></td>
-
-        <td><label>{{snames.name}}</label></td>
-
-        <td><label>{{snames.cat}}</label></td>
-        <td><label>{{snames.price}}</label></td>
-        <td><label>{{snames.test}}</label></td>
-        <td><input type="checkbox" ng-model="snames.Remove" /></td>
-
-      </tr>
-
-    </table>
-
-
-
-    <div id="outer">
-
-      <button class="btn btn-default btn-sm" ng-click="submit()">Display Dishes</button>
-
-      <button class="btn btn-default btn-sm" ng-click="removeRow()">Remove Dish</button>
-      <button class="btn btn-default btn-sm" ng-click="upstb()">Update Dish</button> <br><br>
-      <a href="index.html" class="btn btn-default btn-sm">
-        <span class="glyphicon glyphicon-log-out"></span> Log out
-      </a>
-
-
-
-
-    </div>
-
-
-
-    <div id="display" style="padding:10px 0;">{{display}}</div>
-
-  </div>
-
-</body>
-
-
-
-<script>
-
-  var app = angular.module('myApp', []);
-
-  app.controller('myController', function ($scope) {
-
-
-
-    $scope.sArray =
-
-      [
-
-        {'name': 'Paneer', 'cat': "veg", 'price': 400, "test": 123},
-
-        {'name': 'Veg Thali', 'cat': "veg", 'price': 100, "test": 123},
-
-        {'name': 'Biryani', 'cat': "non-veg", 'price': 200, "test": 123}
-
-      ];
-
-
-
-    $scope.addRow = function () {
-
-      if ($scope.name != undefined && $scope.cat != undefined && $scope.price != undefined && $scope.test != undefined) {
-
-        var sname = [];
-
-        sname.name = $scope.name;
-
-        sname.cat = $scope.cat;
-
-        sname.price = $scope.price;
-        sname.test = $scope.test;
-
-
-        $scope.sArray.push(sname);
-        $scope.name = null;
-
-        $scope.cat = null;
-        $scope.price = null;
-        $scope.test = null;
-
-      }
-
-    };
-
-
-    $scope.removeRow = function () {
-
-      var arrstud = [];
-
-      angular.forEach($scope.sArray, function (value) {
-
-        if (!value.Remove) {
-
-          arrstud.push(value);
-
-        }
-
-      });
-
-      $scope.sArray = arrstud;
-
-    };
-    $scope.upstb = function () {
-      rn = window.prompt("Input the Row number", "0");
-      cn = window.prompt("Input the Column number", "0");
-      content = window.prompt("Input the Cell content");
-      var x = document.getElementById('table').rows[parseInt(rn, 10)].cells;
-      x[parseInt(cn, 10)].innerHTML = content;
-
-
-    };
-
-
-
-    $scope.submit = function () {
-
-      var arrstud = [];
-
-      angular.forEach($scope.sArray, function (value) {
-
-        arrstud.push('Dish Name:' + value.name + ', Category:' + value.cat + 'Dish Price:' + value.price);
-
-      });
-
-      $scope.display = arrstud;
-
-    };
-
-  });</script>
-
-</html
+        </script>
+  
+  
+  
+      </ul>
+  
+  
+  
+  
+  
+      <table id="table" style="font-family: 'Big Shoulders Text', cursive;">
+  
+        <tr>
+  
+          <th>*Dish ID</th>
+  
+  
+          <th>*Dish Name</th>
+  
+          <th>*Dish Category</th>
+          <th>*Dish Price</th>
+          <th>test</th>
+          <th>delete data</th>
+  
+        </tr>
+  
+  
+  
+        <tr ng-repeat="snames in sArray">
+  
+          <td><label>{{$index + 1}}</label></td>
+  
+          <td><label>{{snames.name}}</label></td>
+  
+          <td><label>{{snames.cat}}</label></td>
+          <td><label>{{snames.price}}</label></td>
+          <td><label>{{snames.test}}</label></td>
+          <td><input type="checkbox" ng-model="snames.Remove" /></td>
+  
+        </tr>
+  
+      </table>
+  
+  
+  
+      <div id="outer">
+  
+        <button class="btn btn-default btn-sm" ng-click="submit()">Display Dishes</button>
+  
+        <button class="btn btn-default btn-sm" ng-click="removeRow()">Remove Dish</button>
+        <button class="btn btn-default btn-sm" ng-click="upstb()">Update Dish</button> <br><br>
+        <a href="index.html" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+  
+  
+  
+  
+      </div>
+  
+  
+  
+      <div id="display" style="padding:10px 0;">{{display}}</div>
+  
+    </div> -->
+		</div>
+	</body>
+
+	<script>
+		var app = angular.module("myApp", []);
+
+		app.controller("myController", function ($scope) {
+			$scope.sArray = [
+				{ name: "Paneer", cat: "veg", price: 400, test: 123 },
+
+				{ name: "Veg Thali", cat: "veg", price: 100, test: 123 },
+
+				{ name: "Biryani", cat: "non-veg", price: 200, test: 123 },
+			];
+
+			$scope.addRow = function () {
+				if (
+					$scope.name != undefined &&
+					$scope.cat != undefined &&
+					$scope.price != undefined &&
+					$scope.test != undefined
+				) {
+					var sname = [];
+
+					sname.name = $scope.name;
+
+					sname.cat = $scope.cat;
+
+					sname.price = $scope.price;
+					sname.test = $scope.test;
+
+					$scope.sArray.push(sname);
+					$scope.name = null;
+
+					$scope.cat = null;
+					$scope.price = null;
+					$scope.test = null;
+				}
+			};
+
+			$scope.removeRow = function () {
+				var arrstud = [];
+
+				angular.forEach($scope.sArray, function (value) {
+					if (!value.Remove) {
+						arrstud.push(value);
+					}
+				});
+
+				$scope.sArray = arrstud;
+			};
+			$scope.upstb = function () {
+				rn = window.prompt("Input the Row number", "0");
+				cn = window.prompt("Input the Column number", "0");
+				content = window.prompt("Input the Cell content");
+				var x = document.getElementById("table").rows[parseInt(rn, 10)].cells;
+				x[parseInt(cn, 10)].innerHTML = content;
+			};
+
+			$scope.submit = function () {
+				var arrstud = [];
+
+				angular.forEach($scope.sArray, function (value) {
+					arrstud.push(
+						"Dish Name:" +
+							value.name +
+							", Category:" +
+							value.cat +
+							"Dish Price:" +
+							value.price
+					);
+				});
+
+				$scope.display = arrstud;
+			};
+		});
+	</script>
+</html>
