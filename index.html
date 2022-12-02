@@ -8,106 +8,6 @@
 			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 		/>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-		<!-- <style>
-    body {
-      background-color: black;
-      background-size: cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: left;
-      color: white;
-    }
-
-    div {
-
-      font: 15px;
-
-      width: 450px;
-
-    }
-
-    ul {
-      color: white;
-      padding: 0;
-      font-family: 'Big Shoulders Text', cursive;
-      ;
-      margin: 2px 5px;
-
-      list-style: none;
-
-      border: 0;
-
-      float: left;
-
-      width: 100%;
-
-    }
-
-    li {
-
-      width: 50%;
-
-      float: left;
-
-      display: flex-row;
-
-
-    }
-
-    table,
-    input {
-
-      text-align: left;
-
-      font: 13px;
-
-    }
-
-    table,
-    td,
-    th {
-
-      margin: 10px 0;
-
-      padding: 2px 10px;
-
-    }
-
-    td,
-    th {
-
-      border: solid 2px #CCC;
-      color: white;
-
-    }
-
-    button {
-
-      font: 13px;
-      display: flex-row;
-      padding: 3px 5px;
-      font-family: 'Big Shoulders Text', cursive;
-      color: black;
-      text-transform: uppercase;
-      font-size: 16px;
-      padding: 5px 10px;
-      letter-spacing: 2px;
-      border: 1;
-
-
-    }
-
-    h1 {
-      color: whitesmoke;
-      background-color: ;
-      text-align: center;
-      height: 2cm;
-      font-family: 'Big Shoulders Text', cursive;
-      font-size: 4em;
-      font-weight: 600;
-    }
-  </style> -->
 
 		<style>
 			input {
@@ -144,7 +44,7 @@
 						<input
 							type="text"
 							class="form-control py-1"
-							placeholder="Dish Name"
+							placeholder="Policy Name"
 							ng-model="name"
 						/>
 					</div>
@@ -152,7 +52,7 @@
 						<input
 							type="text"
 							class="form-control py-1"
-							placeholder="Dish Category"
+							placeholder="Term of Insurance"
 							ng-model="cat"
 						/>
 					</div>
@@ -160,16 +60,24 @@
 						<input
 							type="text"
 							class="form-control py-1"
-							placeholder="Dish Price"
+							placeholder="Policy Number"
 							ng-model="price"
 						/>
 					</div>
 					<div class="col-md-3">
 						<input
-							type="text"
+							type="date"
 							class="form-control py-1"
-							placeholder="test"
-							ng-model="test"
+							placeholder="Start Date"
+							ng-model="start"
+						/>
+					</div>
+					<div class="col-md-3">
+						<input
+							type="date"
+							class="form-control py-1"
+							placeholder="End Date"
+							ng-model="end"
 						/>
 					</div>
 				</div>
@@ -195,10 +103,11 @@
 					<thead>
 						<tr>
 							<th scope="col">Dish ID</th>
-							<th scope="col">Dish Name</th>
-							<th scope="col">Dish Category</th>
-							<th scope="col">Dish Price</th>
-							<th scope="col">test</th>
+							<th scope="col">Policy Name</th>
+							<th scope="col">Term of Insurance</th>
+							<th scope="col">Policy Number</th>
+							<th scope="col">Start Date</th>
+							<th scope="col">End Date</th>
 							<th scope="col">delete data</th>
 						</tr>
 					</thead>
@@ -210,7 +119,8 @@
 
 							<td>{{snames.cat}}</td>
 							<td>{{snames.price}}</td>
-							<td>{{snames.test}}</td>
+							<td>{{snames.start}}</td>
+							<td>{{snames.end}}</td>
 							<td><input type="checkbox" ng-model="snames.Remove" /></td>
 						</tr>
 					</tbody>
@@ -227,110 +137,6 @@
 				</button>
 				<a class="btn btn-primary" href="index.html">Log Out</a>
 			</div>
-
-			<!-- <div ng-app="myApp" ng-controller="myController">
-  
-      <ul>
-  
-        Dish Name:<input style="color: black;" type="text" ng-model="name" />
-  
-      </ul>
-  
-      <ul>
-  
-        Dish Category: <input style="color: black;" type="text" ng-model="cat" />
-  
-      </ul>
-      <ul>
-  
-        Dish Price: <input style="color: black;" type="text" ng-model="price" />
-  
-      </ul>
-  
-      <ul>
-  
-        Dish Test <input style="color: black;" type="text" ng-model="test" />
-  
-      </ul>
-  
-      <ul>
-        <li><button class="btn btn-default btn-sm" ng-click="addRow()"> Add New Dish</button></li>
-  
-  
-        <script>
-          $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-              var value = $(this).val().toLowerCase();
-              $("#table tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-              });
-            });
-          });
-        </script>
-  
-  
-  
-      </ul>
-  
-  
-  
-  
-  
-      <table id="table" style="font-family: 'Big Shoulders Text', cursive;">
-  
-        <tr>
-  
-          <th>*Dish ID</th>
-  
-  
-          <th>*Dish Name</th>
-  
-          <th>*Dish Category</th>
-          <th>*Dish Price</th>
-          <th>test</th>
-          <th>delete data</th>
-  
-        </tr>
-  
-  
-  
-        <tr ng-repeat="snames in sArray">
-  
-          <td><label>{{$index + 1}}</label></td>
-  
-          <td><label>{{snames.name}}</label></td>
-  
-          <td><label>{{snames.cat}}</label></td>
-          <td><label>{{snames.price}}</label></td>
-          <td><label>{{snames.test}}</label></td>
-          <td><input type="checkbox" ng-model="snames.Remove" /></td>
-  
-        </tr>
-  
-      </table>
-  
-  
-  
-      <div id="outer">
-  
-        <button class="btn btn-default btn-sm" ng-click="submit()">Display Dishes</button>
-  
-        <button class="btn btn-default btn-sm" ng-click="removeRow()">Remove Dish</button>
-        <button class="btn btn-default btn-sm" ng-click="upstb()">Update Dish</button> <br><br>
-        <a href="index.html" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-log-out"></span> Log out
-        </a>
-  
-  
-  
-  
-      </div>
-  
-  
-  
-      <div id="display" style="padding:10px 0;">{{display}}</div>
-  
-    </div> -->
 		</div>
 	</body>
 
@@ -339,11 +145,11 @@
 
 		app.controller("myController", function ($scope) {
 			$scope.sArray = [
-				{ name: "Paneer", cat: "veg", price: 400, test: 123 },
+				{ name: "Paneer", cat: "veg", price: 400, start: 123, end: 123 },
 
-				{ name: "Veg Thali", cat: "veg", price: 100, test: 123 },
+				{ name: "Veg Thali", cat: "veg", price: 100, start: 123, end: 123 },
 
-				{ name: "Biryani", cat: "non-veg", price: 200, test: 123 },
+				{ name: "Biryani", cat: "non-veg", price: 200, start: 123, end: 123 },
 			];
 
 			$scope.addRow = function () {
@@ -351,7 +157,8 @@
 					$scope.name != undefined &&
 					$scope.cat != undefined &&
 					$scope.price != undefined &&
-					$scope.test != undefined
+					$scope.start != undefined &&
+					$scope.end != undefined
 				) {
 					var sname = [];
 
@@ -360,14 +167,29 @@
 					sname.cat = $scope.cat;
 
 					sname.price = $scope.price;
-					sname.test = $scope.test;
+
+					var startd = new Date($scope.start);
+					var dd = String(startd.getDate()).padStart(2, "0");
+					var mm = String(startd.getMonth() + 1).padStart(2, "0"); //January is 0!
+					var yyyy = startd.getFullYear();
+					startd = dd + "/" + mm + "/" + yyyy;
+					sname.start = startd;
+
+					var endd = new Date($scope.end);
+					var dd = String(endd.getDate()).padStart(2, "0");
+					var mm = String(endd.getMonth() + 1).padStart(2, "0"); //January is 0!
+					var yyyy = endd.getFullYear();
+					endd = dd + "/" + mm + "/" + yyyy;
+
+					sname.end = endd;
 
 					$scope.sArray.push(sname);
 					$scope.name = null;
 
 					$scope.cat = null;
 					$scope.price = null;
-					$scope.test = null;
+					$scope.start = null;
+					$scope.end = null;
 				}
 			};
 
