@@ -10,27 +10,44 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 
 		<style>
-			input {
-				margin: 1rem;
-			}
+						input {
+							margin-bottom: 1rem;
+						}
 
-			button {
-				margin: 1rem;
-				padding: 1rem;
-			}
+						label {
+							margin-left: 1rem;
+						}
+						button {
+							margin: 1rem;
+							padding: 1rem;
+			s			}
 
-			a {
-				margin: 1rem;
-				padding: 1rem;
-			}
+						a {
+							margin: 1rem;
+							padding: 1rem;
+						}
 
-			table {
-				margin-top: 3rem;
-			}
+						table {
+							margin-top: 4rem;
+						}
 
-			h1 {
-				text-align: center;
-			}
+						h1 {
+							text-align: center;
+						}
+
+						.d-form {
+							padding: 1rem;
+			           margin: 5% 0 0 0;
+							border: 2px solid gray ;
+			           border-radius: 15px;
+
+						}
+
+						.row {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
 		</style>
 	</head>
 
@@ -39,52 +56,64 @@
 			<h1 id="h1">Hey!! Welcome To The Coffee Bean's 😀</h1>
 
 			<div ng-app="myApp" ng-controller="myController">
-				<div class="row">
-					<div class="col-md-3">
-						<input
-							type="text"
-							class="form-control py-1"
-							placeholder="Policy Name"
-							ng-model="name"
-						/>
+				<div class="d-form">
+					<div class="row">
+						<div class="col-md-3">
+							<label for="">Policy Name</label>
+							<input
+								type="text"
+								class="form-control py-1"
+								placeholder="Policy Name"
+								ng-model="name"
+							/>
+						</div>
+						<div class="col-md-3">
+							<label for="">Term of Insurance</label>
+							<input
+								type="text"
+								class="form-control py-1"
+								placeholder="Term of Insurance"
+								ng-model="cat"
+							/>
+						</div>
+						<div class="col-md-3">
+							<label for="">Policy Number</label>
+							<input
+								type="text"
+								class="form-control py-1"
+								placeholder="Policy Number"
+								ng-model="price"
+							/>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<input
-							type="text"
-							class="form-control py-1"
-							placeholder="Term of Insurance"
-							ng-model="cat"
-						/>
+
+					<div class="row">
+						<div class="col-md-3">
+							<label for="">Start Date</label>
+							<input
+								type="date"
+								class="form-control py-1"
+								placeholder="Start Date"
+								ng-model="start"
+							/>
+						</div>
+						<div class="col-md-3">
+							<label for="">End Date</label>
+							<input
+								type="date"
+								class="form-control py-1"
+								placeholder="End Date"
+								value="End Date"
+								ng-model="end"
+							/>
+						</div>
 					</div>
-					<div class="col-md-3">
-						<input
-							type="text"
-							class="form-control py-1"
-							placeholder="Policy Number"
-							ng-model="price"
-						/>
-					</div>
-					<div class="col-md-3">
-						<input
-							type="date"
-							class="form-control py-1"
-							placeholder="Start Date"
-							ng-model="start"
-						/>
-					</div>
-					<div class="col-md-3">
-						<input
-							type="date"
-							class="form-control py-1"
-							placeholder="End Date"
-							ng-model="end"
-						/>
+					<div class="row">
+						<button type="button" class="btn btn-primary" ng-click="addRow()">
+							Add
+						</button>
 					</div>
 				</div>
-
-				<button type="button" class="btn btn-primary" ng-click="addRow()">
-					Add
-				</button>
 
 				<script>
 					$(document).ready(function () {
